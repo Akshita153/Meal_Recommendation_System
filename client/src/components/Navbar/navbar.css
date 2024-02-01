@@ -1,0 +1,31 @@
+
+.navbarr{
+    margin-top: -0.5rem;
+    width: 100%;
+    z-index: +1;
+    position: fixed;
+}
+
+.icon{
+    height: 50px;
+    color: #975625;
+}
+
+.btn-color{
+    color: #be763e;
+    border-color: #be763e;
+}
+.btn-color:hover{
+    background-color: #be763e;
+    color: black;
+    border-color: #be763e;
+}
+
+.brand{
+    color: #bd5200;
+    font-weight: 500;
+}
+.brandd{
+    color: #bd5200;
+    font-weight: lighter;
+}
