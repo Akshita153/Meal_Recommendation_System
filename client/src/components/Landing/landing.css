@@ -1,0 +1,42 @@
+.lBody{
+    background-image: url('../../assets/pic.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -1;
+}
+.h11{
+    color: #c69774 !important;
+    
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 18%;
+    left: 2%;
+    z-index: -0.9;
+    transform: translateX(-50) translateY(-50);
+    font-weight: bold;
+    font-size: 3.5rem;
+}
+.h55{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+    top: 30%;
+    left: 2.5%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    color: #c69774 !important;
+    text-wrap: wrap;
+    width: 25rem;
+    z-index: -0.4;
+}
+
+.btn-landing{
+    width: 250px;
+    margin-top: 30%;
+    margin-left: 5%;
+    margin-bottom: 18%;
+}
