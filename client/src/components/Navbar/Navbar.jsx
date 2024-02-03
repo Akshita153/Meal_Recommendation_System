@@ -25,9 +25,9 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <a className="navbar-brand brandd" href="/">
+            <Link to='/about-us' className="navbar-brand brandd" href="/">
               About Us
-            </a>
+            </Link>
             <form className="d-flex" role="search">
               <Link to="/login" className="btn btn-outline-primary btn-color">
                 Login

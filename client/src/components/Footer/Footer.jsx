@@ -29,7 +29,7 @@ const Footer = () => {
           margin={{ xs: "20px 0", sm: "30px" }}
         >
           <Box display="flex" alignItems="center">
-            <img src={ME} style={{
+            <img src={ME} alt="/" style={{
                 height: '3rem',
                 marginRight: "8px",
                 
@@ -124,12 +124,13 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
+         
         </Box>
       </Grid>
-
+      <h6 style={{marginBottom:'-2rem'}}>© 2024 Diet Planner. All rights reserved.</h6>
       <Divider style={{ width: "100%", backgroundColor: "white" }} />
     </Grid>
- 
+                
     </div>
   );
 };
