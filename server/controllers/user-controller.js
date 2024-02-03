@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 
 export const getAllUsers = async (req, res, next) => {
@@ -15,41 +15,27 @@ export const getAllUsers = async (req, res, next) => {
   return res.status(200).json({ users });
 };
 
-export const signup = async (req, res, next) => {
+export const register = async (req, res, next) => {
   const { name, email, password } = req.body;
-  if (
-    !name &&
-    name.trim === "" &&
-    !email &&
-    email.trim() === "" &&
-    !password &&
-    password.trim() === ""
-  ) {
-    return res.status(422).json({ message: "Invalid input data!" });
-  }
 
-  let existingUser;
   try {
-    existingUser = await User.findOne({ email });
-  } catch (err) {
-    return console.log(err);
-  }
-  if (existingUser) {
-    return res.status(400).json({ message: "User already exist!" });
-  }
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json("Email already exists"); // Send error response
+    }
 
-  let user;
-  const hashedPassword = bcrypt.hashSync(password);
-  try {
-    user = new User({ name, email, password: hashedPassword });
-    user = await user.save();
-  } catch (err) {
-    return next(err);
+    const userDoc = await User.create({
+      name,
+      email,
+      password: bcrypt.hashSync(password),
+    });
+
+    res.json(userDoc);
+    // console.log("User registered Successfully!");
+  } catch (error) {
+    console.error("Error in registering user:", error);
+    res.status(500).json({ error: "Registration failed" }); // Send generic error response
   }
-  if (!user) {
-    return res.status(500).json({ message: "Unexpected error occurrd!" });
-  }
-  return res.status(201).json({ id : user._id });
 };
 
 export const updateUser = async (req, res, next) => {
@@ -100,7 +86,7 @@ export const deleteUser = async (req, res, next) => {
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email && email.trim() === "" && !password && password.trim() === "") {
-    return res.status(422).json({ message: "Invalid input data!" });
+    return res.status(422).json("Invalid input data!");
   }
   let existingUser;
   try {
@@ -109,15 +95,13 @@ export const login = async (req, res, next) => {
     return console.log(err);
   }
   if (!existingUser) {
-    return res
-      .status(404)
-      .json({ message: "Unable to find user of this Id!" });
+    return res.status(404).json("User does not exist! Please Register!");
   }
   const isPasswordCorrect = bcrypt.compareSync(password, existingUser.password);
   if (!isPasswordCorrect) {
-    return res.status(400).json({ message: "Incorrect Password!" });
+    return res.status(400).json("Incorrect Email or Password!");
   }
-  return res.status(200).json({ message: "Login Successfully!", id: existingUser._id });
+  return res.status(200).json("Login Successfully!");
 };
 
 export const getUserById = async (req, res, next) => {
