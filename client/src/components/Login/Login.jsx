@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -15,6 +15,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import axios from "axios";
+import { UserContext, useUserContext } from "../../context/userContext";
 
 const Login = () => {
   // functions
@@ -27,6 +28,7 @@ const Login = () => {
   const [password, setPassword] = useState(""); // form input
   const [redirect, setRedirect] = useState(false); // redirect to '/' after successful login
   const [errorMessage, setErrorMessage] = useState(""); // handling error msgs
+  const { setUser } = useContext(UserContext);
 
   const isEmailValid = (email) => {
     return email.includes("@gmail.com");
@@ -43,6 +45,7 @@ const Login = () => {
         email,
         password,
       });
+      setUser(data);
       alert("User login successful!");
       setRedirect(true);
     } catch (error) {

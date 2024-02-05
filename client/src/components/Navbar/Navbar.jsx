@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Icon from "../../assets/icon.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./navbar.css";
+import { UserContext } from "../../context/userContext";
 
 const Navbar = () => {
+  // Using context variables
+  const { user, logout } = useContext(UserContext);
+
+  const [isLoggedin, setIsLoggedin] = useState(false); // user login status
+
+  // checking if user has logged in or not
+  useEffect(() => {
+    if (user) {
+      setIsLoggedin(true);
+    } else {
+      setIsLoggedin(false);
+    }
+  }, [user]);
+
+  // handling user logout
+  const handleUserLogout = () => {
+    logout();
+    alert("User log-out successful");
+  };
+
   return (
     <div className="navbarr">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -29,9 +51,18 @@ const Navbar = () => {
               About Us
             </a>
             <form className="d-flex" role="search">
-              <Link to="/login" className="btn btn-outline-primary btn-color">
-                Login
-              </Link>
+              {isLoggedin ? (
+                <Link
+                  onClick={handleUserLogout}
+                  className="btn btn-outline-primary btn-color"
+                >
+                  Logout
+                </Link>
+              ) : (
+                <Link to="/login" className="btn btn-outline-primary btn-color">
+                  Login
+                </Link>
+              )}
             </form>
           </div>
         </div>
