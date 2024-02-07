@@ -54,6 +54,9 @@ const Navbar = () => {
             <a className="navbar-brand brandd" href="/aboutus">
               About Us
             </a>
+            {isLoggedin ?(<a className="navbar-brand brandd" href="/meal">
+              Meal
+            </a>): ''}
             <form className="d-flex" role="search">
               {isLoggedin ? (
                 <Link
