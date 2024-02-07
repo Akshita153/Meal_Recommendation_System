@@ -1,22 +1,25 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import userRouter from "./routes/user-routes.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
-dotenv.config();
 const app = express();
-app.use(express.json());
+
+// Middlewares
+app.use(express.json()); // parsing incoming json data from requests
+app.use(cookieParser()); // parsing cookies
 
 app.use(
   cors({
     origin: "http://localhost:3000",
-    methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
     credentials: true,
   })
 );
 
-//middleware
+// Implementing the above imported routes
 app.use(userRouter);
 
 mongoose
@@ -25,5 +28,3 @@ mongoose
     app.listen(5000, () => console.log("Server is running on port 5000!"))
   )
   .catch((e) => console.log(e));
-
-  

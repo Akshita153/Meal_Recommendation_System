@@ -1,5 +1,12 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
+
+// Importing the jwt secret token
+const jwtSecret = process.env.JWT_SECRET;
+console.log(jwtSecret);
 
 export const register = async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -29,20 +36,40 @@ export const login = async (req, res, next) => {
   if (!email && email.trim() === "" && !password && password.trim() === "") {
     return res.status(422).json("Invalid input data!");
   }
-  let existingUser;
-  try {
-    existingUser = await User.findOne({ email });
-  } catch (err) {
-    return console.log(err);
+  // Finding user with email in database
+  const userDoc = await User.findOne({ email });
+  if (userDoc) {
+    // Checking password
+    const passOk = bcrypt.compareSync(password, userDoc.password);
+    if (passOk) {
+      // creating json web token
+      jwt.sign(
+        {
+          email: userDoc.email,
+          id: userDoc._id,
+        },
+        jwtSecret,
+        {},
+        (err, token) => {
+          if (err) {
+            throw err;
+          } else {
+            console.log(token);
+            res.cookie("token", token).json(userDoc);
+          }
+        }
+      );
+    } else {
+      res.status(422).json("Password not OK");
+    }
+  } else {
+    res.status(422).json("User not found");
   }
-  if (!existingUser) {
-    return res.status(404).json("User does not exist! Please Register!");
-  }
-  const isPasswordCorrect = bcrypt.compareSync(password, existingUser.password);
-  if (!isPasswordCorrect) {
-    return res.status(400).json("Incorrect Email or Password!");
-  }
-  return res.status(200).json(existingUser.id);
+};
+
+export const logout = async (req, res) => {
+  // resetting the cookie
+  res.cookie("token", "").json(true);
 };
 
 export const getAllUsers = async (req, res, next) => {

@@ -7,7 +7,7 @@ import { UserContext } from "../../context/userContext";
 
 const Navbar = () => {
   // Using context variables
-  const { user, logout } = useContext(UserContext);
+  const { user, logout, setUser } = useContext(UserContext);
 
   const [isLoggedin, setIsLoggedin] = useState(false); // user login status
 
@@ -21,8 +21,12 @@ const Navbar = () => {
   }, [user]);
 
   // handling user logout
-  const handleUserLogout = () => {
+  const handleUserLogout = async () => {
+    // deleting user obj from lcl storage
     logout();
+    // deleting user obj from cookies
+    await axios.post("/logout");
+    setUser(null);
     alert("User log-out successful");
   };
 
@@ -47,7 +51,7 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <a className="navbar-brand brandd" href="/">
+            <a className="navbar-brand brandd" href="/aboutus">
               About Us
             </a>
             <form className="d-flex" role="search">

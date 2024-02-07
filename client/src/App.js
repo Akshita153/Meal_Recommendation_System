@@ -5,6 +5,9 @@ import Landing from "./components/Landing/Landing";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import { UserContextProvider } from "./context/userContext";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
