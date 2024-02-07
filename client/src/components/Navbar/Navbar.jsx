@@ -51,12 +51,14 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <a className="navbar-brand brandd" href="/aboutus">
+
+            <Link to='/about-us' className="navbar-brand brandd" href="/">
               About Us
-            </a>
+            </Link>
             {isLoggedin ?(<a className="navbar-brand brandd" href="/meal">
               Meal
             </a>): ''}
+                          
             <form className="d-flex" role="search">
               {isLoggedin ? (
                 <Link
