@@ -15,7 +15,7 @@ const AboutUs = () => {
                 </div>
 
                 <div className="">
-                    <Box sx={{ flexGrow: 1, backgroundColor: 'yellow', height: '20rem' }}>
+                    <Box sx={{ flexGrow: 1, backgroundColor: '#f5d2b7', height: '20rem' }}>
                         <Grid container >
                             <Grid item xs={3} sx={{ marginTop: '4rem', display: { xs: 'none', sm: 'none', md: 'none', lg: 'block' }, marginLeft:'2rem' }} >
                                 <img src={icon} alt="" style={{ height: '50%', }} />
@@ -41,7 +41,7 @@ const AboutUs = () => {
 
             </div>
             <div className="offer">
-                <Box className="" sx={{ marginTop: { xs: '0rem', sm: '0rem', md: '0rem', }, backgroundColor: 'yellow', height: '450px' }}>
+                <Box className="" sx={{ marginTop: { xs: '0rem', sm: '0rem', md: '0rem', }, backgroundColor: '#f5d2b7', height: '450px' }}>
                     <Grid container>
                         <Grid item xs={12} sm={12} md={4} lg={6} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block' } }} >
                             <img src={offer} alt="" style={{ padding: '2rem' }} />
