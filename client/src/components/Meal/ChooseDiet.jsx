@@ -8,7 +8,8 @@ import vegan from '../../assets/vegan.png'
 import { Link } from "react-router-dom";
 import Footer from '../Footer/Footer'
 
-const ChooseDiet = () => {
+const ChooseDiet = ({ totalCalories }) => {
+    console.log("Inside ChooseDiet.jsx: ", totalCalories);
     return (
         <div>
             <Box>

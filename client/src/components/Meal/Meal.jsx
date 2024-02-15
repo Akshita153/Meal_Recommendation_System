@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -9,7 +9,8 @@ import ChooseDiet from './ChooseDiet';
 import './meal.css'
 
 const Meal = () => {
-
+  const [totalCalories, setTotalCalories] = useState(""); 
+  console.log("Inside Meal.jsx: ", totalCalories);
   return (
     <div className="">
       <Navbar />
@@ -49,10 +50,10 @@ const Meal = () => {
       </Grid>
 
       {/* Calorie calculator */}
-      <CalorieCalculator />
+      <CalorieCalculator setTotalCalories={setTotalCalories} totalCalories={totalCalories} />
 
      
-      <ChooseDiet />
+      <ChooseDiet totalCalories={totalCalories} />
       
 
     </div>
