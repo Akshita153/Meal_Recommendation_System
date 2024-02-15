@@ -15,7 +15,7 @@ const Footer = () => {
       justifyContent="center"
       alignItems="center"
       height={{ xs: 360, sm: 300, md: 300 }}
-      backgroundColor="#f5d2b7;"
+      backgroundColor="#f5d2b7"
       style={{ position: "static", margin: 0, color: '#975625'}}
       
     >

@@ -5,6 +5,7 @@ import Landing from "./components/Landing/Landing";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import AboutUs from "./components/AboutUs/AboutUs";
+import Meal from "./components/Meal/Meal";
 import { UserContextProvider } from "./context/userContext";
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -20,6 +21,7 @@ function App() {
           <Route exact path='/register' element={<Register />}></Route>
           <Route exact path='/login' element={<Login />}></Route>
           <Route exact path='/about-us' element={<AboutUs />}></Route>
+          <Route exact path='/meal' element={<Meal />}></Route>
 
         </Routes>
       </UserContextProvider>

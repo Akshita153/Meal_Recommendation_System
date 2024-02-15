@@ -52,12 +52,12 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 
-            <Link to='/about-us' className="navbar-brand brandd" href="/">
+            <Link to='/about-us' className="navbar-brand brandd">
               About Us
             </Link>
-            {isLoggedin ?(<a className="navbar-brand brandd" href="/meal">
+            {isLoggedin ?(<Link to='/meal' className="navbar-brand brandd">
               Meal
-            </a>): ''}
+            </Link>): ''}
                           
             <form className="d-flex" role="search">
               {isLoggedin ? (

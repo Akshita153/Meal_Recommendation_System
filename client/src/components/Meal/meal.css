@@ -1,0 +1,19 @@
+.meal{
+    background-image: url('../../assets/meal.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.marquee-container{
+    background-color: rgb(255, 210, 217);
+    background: linear-gradient(to right, #a4d6eb, rgb(255, 207, 214) );
+    
+    padding: 5px;
+}
+.bar{
+    color: green;
+    font-size: large;
+}
+
