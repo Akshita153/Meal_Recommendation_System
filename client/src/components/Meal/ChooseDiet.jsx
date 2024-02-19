@@ -6,7 +6,7 @@ import nonveg from '../../assets/non.png'
 import egg from '../../assets/egg.png'
 import vegan from '../../assets/vegan.png'
 import { Link } from "react-router-dom";
-import Footer from '../Footer/Footer'
+
 
 const ChooseDiet = () => {
     return (
@@ -18,7 +18,7 @@ const ChooseDiet = () => {
                 <Grid container>
                 
                     <Grid item xs={6} md={3} sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', padding: '2rem', background: 'linear-gradient(to bottom, #4be643, white)' }}>
-                        <Link style={{textDecoration:'none'}}>
+                        <Link style={{textDecoration:'none'}} to='/veg'>
                             <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                                 <img src={veg} style={{ height: '15rem' }} alt="" />
                                 <button type="button" className="btn btn-success">Vegetarian</button>
@@ -60,7 +60,7 @@ const ChooseDiet = () => {
 
                 </Grid>
             </Box>
-            <Footer/>
+            
         </div>
     )
 }

@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import CalorieCalculator from './CalorieCalculator';
 // import { Link } from "react-router-dom";
+import Footer from '../Footer/Footer';
 
 import ChooseDiet from './ChooseDiet';
 import './meal.css'
@@ -54,6 +55,8 @@ const Meal = () => {
      
       <ChooseDiet />
       
+
+      <Footer/>
 
     </div>
   )
