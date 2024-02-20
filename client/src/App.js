@@ -8,6 +8,7 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import Meal from "./components/Meal/Meal";
 import { UserContextProvider } from "./context/userContext";
 import axios from "axios";
+import Recipes from "./components/Recipes/Recipes";
 axios.defaults.withCredentials = true;
 
 
@@ -22,7 +23,7 @@ function App() {
           <Route exact path='/login' element={<Login />}></Route>
           <Route exact path='/about-us' element={<AboutUs />}></Route>
           <Route exact path='/meal' element={<Meal />}></Route>
-
+          <Route exact path='/recipes' element={<Recipes/>}></Route>
         </Routes>
       </UserContextProvider>
     </>
