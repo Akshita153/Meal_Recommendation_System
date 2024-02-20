@@ -52,13 +52,73 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 
-            <Link to='/about-us' className="navbar-brand brandd">
+            <Link to="/about-us" className="navbar-brand brandd">
               About Us
             </Link>
-            {isLoggedin ?(<Link to='/meal' className="navbar-brand brandd">
-              Meal
-            </Link>): ''}
-                          
+            <Link to="/recipes" className="navbar-brand brandd">
+              Recipes
+            </Link>
+
+            {/* <Link style={{textDecoration:"none"}}className="nav-item dropdown">
+              <Link
+                className="nav-link dropdown-toggle navbar-brand brandd"
+                to="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                
+              >
+                Recipes
+              </Link>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown" style={{ minWidth: "100px" }}>
+                <li>
+                  <Link
+                    to="/recipes?category=Breakfast"
+                    className="dropdown-item"
+                    style={{ textDecoration: "none", color: "black" }}
+                    onClick={(e) => e.target.parentElement.parentElement.style.backgroundColor = ""}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = "#e8e8e8"}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = ""}
+                  >
+                    Breakfast
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/recipes?category=Lunch"
+                    className="dropdown-item"
+                    style={{ textDecoration: "none", color: "black" }}
+                    onClick={(e) => e.target.parentElement.parentElement.style.backgroundColor = ""}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = "#e8e8e8"}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = ""}
+                  >
+                    Lunch
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/recipes?category=Dinner"
+                    className="dropdown-item"
+                    style={{ textDecoration: "none", color: "black" }}
+                    onClick={(e) => e.target.parentElement.parentElement.style.backgroundColor = ""}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = "#e8e8e8"}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = ""}
+                  >
+                    Dinner
+                  </Link>
+                </li>
+              </ul>
+            </Link> */}
+            
+            {isLoggedin ? (
+              <Link to="/meal" className="navbar-brand brandd">
+                Meal
+              </Link>
+            ) : (
+              ""
+            )}
+
             <form className="d-flex" role="search">
               {isLoggedin ? (
                 <Link
