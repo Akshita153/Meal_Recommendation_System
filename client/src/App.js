@@ -10,6 +10,9 @@ import { UserContextProvider } from "./context/userContext";
 import axios from "axios";
 import Recipes from "./components/Recipes/Recipes";
 import VegMeal from "./components/VegMeal/VegMeal";
+import EggMeal from "./components/EggMeal/EggMeal";
+import ChickenMeal from "./components/ChickenMeal/ChickenMeal";
+import VeganMeal from "./components/VeganMeal/VeganMeal";
 axios.defaults.withCredentials = true;
 
 
@@ -26,6 +29,9 @@ function App() {
           <Route exact path='/meal' element={<Meal />}></Route>
           <Route exact path='/recipes' element={<Recipes/>}></Route>
           <Route exact path='/veg' element={<VegMeal />}></Route>
+          <Route exact path='/egg' element={<EggMeal />}></Route>
+          <Route exact path='/chicken' element={<ChickenMeal />}></Route>
+          <Route exact path='/vegan' element={<VeganMeal />}></Route>
         </Routes>
       </UserContextProvider>
     </>
