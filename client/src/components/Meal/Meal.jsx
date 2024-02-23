@@ -11,7 +11,7 @@ import './meal.css'
 
 const Meal = () => {
   const [totalCalories, setTotalCalories] = useState(""); 
-  console.log("Inside Meal.jsx: ", totalCalories);
+  
   return (
     <div className="">
       <Navbar />
