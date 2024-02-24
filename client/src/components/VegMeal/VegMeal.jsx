@@ -3,21 +3,17 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import {
   Box,
-  TextField,
   Button,
   MenuItem,
   Select,
   InputLabel,
   FormControl,
   FormLabel,
-  FormHelperText,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import "./veg.css";
 import { useState } from "react";
 import milk from "../../assets/milk.gif";
-import carrot from "../../assets/carrot.gif";
-import tom from "../../assets/vegie.gif";
 import tree from "../../assets/tree.gif";
 import { useLocation } from "react-router-dom";
 
@@ -33,9 +29,8 @@ const VegMeal = () => {
     }
   }, [location.state]);
 
-  console.log("Inside VegMeal: ", totalCalories);
 
-  var randomNumber = Math.floor(Math.random() * (3000 - 1500 + 1)) + 1500;
+  var randomNumber = parseInt(totalCalories);
 
   var v = randomNumber;
   var breakfastcal = (v * 30) / 100;
@@ -68,7 +63,7 @@ const VegMeal = () => {
   const randomJuice = juice[Math.floor(Math.random() * juice.length)];
 
   const mealgeneration = () => {
-    var randomNumber = Math.floor(Math.random() * (3000 - 1500 + 1)) + 1500;
+    var randomNumber = parseInt(totalCalories);
 
     var tcal = randomNumber;
     var bf_cal;
@@ -278,22 +273,14 @@ const VegMeal = () => {
           </Grid>
           <Grid item xs={3} sx={{ display: "flex", justifyContent: "center" }}>
             <Box>
-              <img
-                src={carrot}
-                alt="Your Gif"
-                style={{ width: "100%", height: "auto", marginTop: "3rem" }}
-              />
+              
             </Box>
           </Grid>
         </Grid>
         <Grid container spacing={0}>
           <Grid item xs={3} sx={{ display: "flex", justifyContent: "center" }}>
             <Box>
-              <img
-                src={tom}
-                alt="Your Gif"
-                style={{ width: "100%", height: "auto", marginTop: "3rem" }}
-              />
+              
             </Box>
           </Grid>
           <Grid item xs={6} sx={{ marginTop: "0rem", padding: "3rem" }}>
@@ -314,13 +301,13 @@ const VegMeal = () => {
                     <tr>
                       <th scope="row">1</th>
                       <td>{generatedBreakfast}</td>
-                      <td>{breakfastcal - breakfast_juice_cal}</td>
+                      <td>{Math.floor(breakfastcal - breakfast_juice_cal)}</td>
                       <td>1 Plate</td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
                       <td>{randomJuice}</td>
-                      <td>{breakfast_juice_cal}</td>
+                      <td>{Math.floor(breakfast_juice_cal)}</td>
                       <td> {juiceglass} glass</td>
                     </tr>
                   </tbody>
@@ -412,22 +399,6 @@ const VegMeal = () => {
         </Grid>
       </div>
 
-      {/* 
-            <div className="meal-generator-container">
-                <h1>Veg Meal Generator</h1>
-                <div className="input-container">
-                    <label htmlFor="caloriesInput">Enter Calories:</label>
-
-                </div>
-                <button onClick={generateMeal}>Generate Meal</button>
-                {generatedBreakfast && (
-                    <div className="result-container">
-                        <h2>Generated Meal:</h2>
-                        <p>{generatedBreakfast} cal: {breakfastcal - breakfast_juice_cal}</p>
-                        <p>{randomJuice} <br />cal: {breakfast_juice_cal} Glass: {juiceglass}</p>
-                    </div>
-                )}
-            </div> */}
 
       {/* <Footer /> */}
     </div>

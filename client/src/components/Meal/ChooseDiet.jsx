@@ -11,11 +11,24 @@ import { useNavigate } from "react-router-dom";
 const ChooseDiet = ({ totalCalories }) => {
   const navigate = useNavigate();
 
-  console.log("Inside ChooseDiet.jsx: ", totalCalories);
-
   const navigateToVegMeal = () => {
     // Use the navigate function to go to '/veg' with the state
     navigate("/veg", { state: { totalCalories: totalCalories } });
+  };
+
+  const navigateToEggMeal = () => {
+    // Use the navigate function to go to '/veg' with the state
+    navigate("/egg", { state: { totalCalories: totalCalories } });
+  };
+
+  const navigateToChickenMeal = () => {
+    // Use the navigate function to go to '/veg' with the state
+    navigate("/chicken", { state: { totalCalories: totalCalories } });
+  };
+
+  const navigateToVeganMeal = () => {
+    // Use the navigate function to go to '/veg' with the state
+    navigate("/vegan", { state: { totalCalories: totalCalories } });
   };
 
   return (
@@ -78,7 +91,7 @@ const ChooseDiet = ({ totalCalories }) => {
               background: "linear-gradient(to bottom, #f6fc3a, white)",
             }}
           >
-            <Link to="/" style={{ textDecoration: "none" }}>
+            
               <Box
                 sx={{
                   display: "flex",
@@ -91,11 +104,12 @@ const ChooseDiet = ({ totalCalories }) => {
                   type="button"
                   className="btn btn-warning"
                   style={{ color: "white" }}
+                  onClick={navigateToEggMeal}
                 >
                   Egg
                 </button>
               </Box>
-            </Link>
+            
           </Grid>
 
           <Grid
@@ -110,7 +124,7 @@ const ChooseDiet = ({ totalCalories }) => {
               background: "linear-gradient(to bottom, #c46f6a, white)",
             }}
           >
-            <Link style={{ textDecoration: "none" }}>
+           
               <Box
                 sx={{
                   display: "flex",
@@ -123,11 +137,12 @@ const ChooseDiet = ({ totalCalories }) => {
                   type="button"
                   className="btn "
                   style={{ backgroundColor: "#c46f6a", color: "white" }}
+                  onClick={navigateToVeganMeal}
                 >
                   Vegan
                 </button>
               </Box>
-            </Link>
+            
           </Grid>
           <Grid
             item
@@ -141,7 +156,7 @@ const ChooseDiet = ({ totalCalories }) => {
               background: "linear-gradient(to bottom, #f72d2d, white)",
             }}
           >
-            <Link style={{ textDecoration: "none" }}>
+            
               <Box
                 sx={{
                   display: "flex",
@@ -151,11 +166,11 @@ const ChooseDiet = ({ totalCalories }) => {
               >
                 <img src={nonveg} style={{ height: "13.5rem" }} alt="" />
                 <br />
-                <button type="button" className="btn btn-danger">
+                <button type="button" className="btn btn-danger" onClick={navigateToChickenMeal}>
                   Non Veg
                 </button>
               </Box>
-            </Link>
+            
           </Grid>
         </Grid>
       </Box>
