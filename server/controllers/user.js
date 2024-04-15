@@ -87,8 +87,8 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const updateUser = async (req, res, next) => {
-  const id = req.params.id;
-  const { name, email, password } = req.body;
+   id = req.params.id;
+  const { name, emaiconstl, password } = req.body;
   if (
     !name &&
     name.trim === "" &&

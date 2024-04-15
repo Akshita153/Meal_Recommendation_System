@@ -12,6 +12,7 @@ import {
 import Grid from "@mui/material/Grid";
 import ME from "../../assets/sideway.gif";
 import down from "../../assets/down.png";
+import axios from "axios";
 
 function CalorieCalculator({ setTotalCalories, totalCalories }) {
   // const [totalCalories, setTotalCalories] = useState("");
@@ -22,151 +23,152 @@ function CalorieCalculator({ setTotalCalories, totalCalories }) {
   const [activity, setActivity] = useState("1"); // Default activity to '1'
   const [error, setError] = useState("");
 
-  const calculate = () => {
+  const calculate = async () => {
     if (age === "" || weight === "" || height === "" || age < 1) {
       setError("Please make sure the values you entered are correct");
     } else {
+      let calculatedCalories = 0;
+  
+      // Calculate total calories based on gender and activity
       switch (gender) {
         case "male":
           switch (activity) {
             case "1":
-              setTotalCalories(
-                parseInt(
-                  1.2 *
-                    (66.5 +
-                      13.75 * parseFloat(weight) +
-                      5.003 * parseFloat(height) -
-                      6.755 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.2 *
+                  (66.5 +
+                    13.75 * parseFloat(weight) +
+                    5.003 * parseFloat(height) -
+                    6.755 * parseFloat(age))
               );
               break;
             case "2":
-              setTotalCalories(
-                parseInt(
-                  1.375 *
-                    (66.5 +
-                      13.75 * parseFloat(weight) +
-                      5.003 * parseFloat(height) -
-                      6.755 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.375 *
+                  (66.5 +
+                    13.75 * parseFloat(weight) +
+                    5.003 * parseFloat(height) -
+                    6.755 * parseFloat(age))
               );
               break;
             case "3":
-              setTotalCalories(
-                parseInt(
-                  1.55 *
-                    (66.5 +
-                      13.75 * parseFloat(weight) +
-                      5.003 * parseFloat(height) -
-                      6.755 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.55 *
+                  (66.5 +
+                    13.75 * parseFloat(weight) +
+                    5.003 * parseFloat(height) -
+                    6.755 * parseFloat(age))
               );
               break;
             case "4":
-              setTotalCalories(
-                parseInt(
-                  1.725 *
-                    (66.5 +
-                      13.75 * parseFloat(weight) +
-                      5.003 * parseFloat(height) -
-                      6.755 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.725 *
+                  (66.5 +
+                    13.75 * parseFloat(weight) +
+                    5.003 * parseFloat(height) -
+                    6.755 * parseFloat(age))
               );
               break;
             case "5":
-              setTotalCalories(
-                parseInt(
-                  1.9 *
-                    (66.5 +
-                      13.75 * parseFloat(weight) +
-                      5.003 * parseFloat(height) -
-                      6.755 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.9 *
+                  (66.5 +
+                    13.75 * parseFloat(weight) +
+                    5.003 * parseFloat(height) -
+                    6.755 * parseFloat(age))
               );
               break;
             default:
               break;
           }
           break;
-
         case "female":
           switch (activity) {
             case "1":
-              setTotalCalories(
-                parseInt(
-                  1.2 *
-                    (655 +
-                      9.563 * parseFloat(weight) +
-                      1.85 * parseFloat(height) -
-                      4.676 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.2 *
+                  (655 +
+                    9.563 * parseFloat(weight) +
+                    1.85 * parseFloat(height) -
+                    4.676 * parseFloat(age))
               );
               break;
             case "2":
-              setTotalCalories(
-                parseInt(
-                  1.375 *
-                    (655 +
-                      9.563 * parseFloat(weight) +
-                      1.85 * parseFloat(height) -
-                      4.676 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.375 *
+                  (655 +
+                    9.563 * parseFloat(weight) +
+                    1.85 * parseFloat(height) -
+                    4.676 * parseFloat(age))
               );
               break;
             case "3":
-              setTotalCalories(
-                parseInt(
-                  1.55 *
-                    (655 +
-                      9.563 * parseFloat(weight) +
-                      1.85 * parseFloat(height) -
-                      4.676 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.55 *
+                  (655 +
+                    9.563 * parseFloat(weight) +
+                    1.85 * parseFloat(height) -
+                    4.676 * parseFloat(age))
               );
               break;
             case "4":
-              setTotalCalories(
-                parseInt(
-                  1.725 *
-                    (655 +
-                      9.563 * parseFloat(weight) +
-                      1.85 * parseFloat(height) -
-                      4.676 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.725 *
+                  (655 +
+                    9.563 * parseFloat(weight) +
+                    1.85 * parseFloat(height) -
+                    4.676 * parseFloat(age))
               );
               break;
-
             case "5":
-              setTotalCalories(
-                parseInt(
-                  1.9 *
-                    (655 +
-                      9.563 * parseFloat(weight) +
-                      1.85 * parseFloat(height) -
-                      4.676 * parseFloat(age))
-                ) + " KCal"
+              calculatedCalories = Math.round(
+                1.9 *
+                  (655 +
+                    9.563 * parseFloat(weight) +
+                    1.85 * parseFloat(height) -
+                    4.676 * parseFloat(age))
               );
-
               break;
             default:
               break;
           }
           break;
-
         default:
           break;
       }
+  
+      // Update the totalCalories state
+      setTotalCalories(calculatedCalories + " KCal");
+  
+      try {
+        // Make HTTP request to store data
+        const response = await axios.post("/healthDetails", {
+          age,
+          gender,
+          weight,
+          height,
+          activityLevel: activity,
+          totalCalories: calculatedCalories + " KCal", // Assign the value here
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error in storing health data:", error);
+        setError("Failed to store health data");
+      }
+  
+      // Log information to the console
+      console.log("Age:", age);
+      console.log("Gender:", gender);
+      console.log("Weight:", weight);
+      console.log("Height:", height);
+      console.log("Activity Level:", activity);
+      console.log("Total Calories", calculatedCalories);
     }
-
-    // Log information to the console
-    console.log("Age:", age);
-    console.log("Gender:", gender);
-    console.log("Weight:", weight);
-    console.log("Height:", height);
-    console.log("Activity Level:", activity);
-    // console.log("Inside CalorieCalulator.jsx: ", totalCalories);
-    // console.log("Error:", error);
   };
+
+
+  
+
   useEffect(() => {
     console.log("Inside CalorieCalulator.jsx: ", totalCalories);
   }, [totalCalories]);
