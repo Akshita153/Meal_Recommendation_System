@@ -17,7 +17,7 @@ const Meal = () => {
       <Navbar />
 
       {/* Welcome to the meal page */}
-      <div className='meal'>
+      <div className='meal' style={{}}>
         <Box >
           <Grid container sx={{ textAlign: 'center' }}>
 
@@ -50,7 +50,7 @@ const Meal = () => {
         </Grid>
       </Grid>
 
-      {/* Calorie calculator */}
+      {/* Calorie calculator is called */}
       <CalorieCalculator setTotalCalories={setTotalCalories} totalCalories={totalCalories} />
 
      

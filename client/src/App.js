@@ -13,6 +13,7 @@ import VegMeal from "./components/VegMeal/VegMeal";
 import EggMeal from "./components/EggMeal/EggMeal";
 import ChickenMeal from "./components/ChickenMeal/ChickenMeal";
 import VeganMeal from "./components/VeganMeal/VeganMeal";
+import Profile from "./components/Profile/Profile";
 axios.defaults.withCredentials = true;
 
 
@@ -32,6 +33,7 @@ function App() {
           <Route exact path='/egg' element={<EggMeal />}></Route>
           <Route exact path='/chicken' element={<ChickenMeal />}></Route>
           <Route exact path='/vegan' element={<VeganMeal />}></Route>
+          <Route exact path='/profile' element={<Profile />}></Route>
         </Routes>
       </UserContextProvider>
     </>
