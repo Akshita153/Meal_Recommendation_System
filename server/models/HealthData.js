@@ -8,6 +8,10 @@ const healthDataSchema = new Schema({
     ref: "User",
     required: true,
   },
+  gender: {
+    type: String,
+    required: true,
+  },
   age: {
     type: Number,
     required: true,
@@ -25,8 +29,8 @@ const healthDataSchema = new Schema({
     required: true,
   },
   totalCalories: {
-    type: String,
-    required: true
+    type: Number,
+    required: true,
   },
 });
 

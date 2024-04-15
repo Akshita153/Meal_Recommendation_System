@@ -110,10 +110,18 @@ const Navbar = () => {
                 </li>
               </ul>
             </Link> */}
-            
+
             {isLoggedin ? (
               <Link to="/meal" className="navbar-brand brandd">
                 Meal
+              </Link>
+            ) : (
+              ""
+            )}
+
+            {isLoggedin ? (
+              <Link to="/profile" className="navbar-brand brandd">
+                Profile
               </Link>
             ) : (
               ""

@@ -132,16 +132,20 @@ export const deleteUser = async (req, res, next) => {
 };
 
 export const getUserById = async (req, res, next) => {
-  const id = req.params.id;
-  let user;
-  try {
-    user = await User.findById(id);
-  } catch (err) {
-    return next(err);
-  }
+  const { token } = req.cookies;
 
-  if (!user) {
-    return res.status(500).json({ message: "Unexpected error occurred!" });
+  try {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) {
+        throw err;
+      } else {
+        const userDoc = await User.findById(userData.id);
+        console.log(userDoc);
+        res.status(200).json({ userDoc });
+      }
+    });
+  } catch (error) {
+    console.error("Error in fetching user data!", error);
+    res.status(500).json({ error: "Failed to fetch user data" });
   }
-  return res.status(200).json({ user });
 };

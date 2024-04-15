@@ -17,21 +17,48 @@ import axios from "axios";
 function CalorieCalculator({ setTotalCalories, totalCalories }) {
   // const [totalCalories, setTotalCalories] = useState("");
   const [age, setAge] = useState("");
-  const [gender, setGender] = useState("male"); // Default gender to 'male'
+  const [gender, setGender] = useState("Male"); // Default gender to 'male'
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [activity, setActivity] = useState("1"); // Default activity to '1'
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    // Fetch health details from the database when the component mounts
+    const fetchHealthDetails = async () => {
+      try {
+        const response = await axios.get("/healthDetails/:id"); // Adjust the URL with the correct user ID
+        const healthData = response.data.healthData;
+        if (healthData.length > 0) {
+          const { age, gender, weight, height, activityLevel, totalCalories } =
+            healthData[0];
+          // setAge(age);
+          // setGender(gender);
+          // setWeight(weight);
+          // setHeight(height);
+          // setActivity(activityLevel);
+          setTotalCalories(totalCalories);
+        }
+      } catch (error) {
+        console.error("Error fetching health details:", error);
+      }
+    };
+
+    fetchHealthDetails();
+  }, [setTotalCalories]);
+
   const calculate = async () => {
     if (age === "" || weight === "" || height === "" || age < 1) {
-      setError("Please make sure the values you entered are correct");
+      alert("Please make sure the values you entered are correct!");
     } else {
+      alert(
+        "Your Calorie intake and health details are updated in your profile page!"
+      );
       let calculatedCalories = 0;
-  
+
       // Calculate total calories based on gender and activity
       switch (gender) {
-        case "male":
+        case "Male":
           switch (activity) {
             case "1":
               calculatedCalories = Math.round(
@@ -82,7 +109,7 @@ function CalorieCalculator({ setTotalCalories, totalCalories }) {
               break;
           }
           break;
-        case "female":
+        case "Female":
           switch (activity) {
             case "1":
               calculatedCalories = Math.round(
@@ -136,10 +163,10 @@ function CalorieCalculator({ setTotalCalories, totalCalories }) {
         default:
           break;
       }
-  
+
       // Update the totalCalories state
-      setTotalCalories(calculatedCalories + " KCal");
-  
+      setTotalCalories(calculatedCalories);
+
       try {
         // Make HTTP request to store data
         const response = await axios.post("/healthDetails", {
@@ -148,14 +175,14 @@ function CalorieCalculator({ setTotalCalories, totalCalories }) {
           weight,
           height,
           activityLevel: activity,
-          totalCalories: calculatedCalories + " KCal", // Assign the value here
+          totalCalories: calculatedCalories, // Assign the value here
         });
         console.log(response.data);
       } catch (error) {
         console.error("Error in storing health data:", error);
         setError("Failed to store health data");
       }
-  
+
       // Log information to the console
       console.log("Age:", age);
       console.log("Gender:", gender);
@@ -165,9 +192,6 @@ function CalorieCalculator({ setTotalCalories, totalCalories }) {
       console.log("Total Calories", calculatedCalories);
     }
   };
-
-
-  
 
   useEffect(() => {
     console.log("Inside CalorieCalulator.jsx: ", totalCalories);
@@ -231,7 +255,7 @@ function CalorieCalculator({ setTotalCalories, totalCalories }) {
                   textAlign: "center",
                 }}
               >
-                <p id="print">{totalCalories}</p>
+                <p id="print">{totalCalories} kcal</p>
                 <p id="error">{error}</p>
               </div>
             </div>
@@ -271,8 +295,8 @@ function CalorieCalculator({ setTotalCalories, totalCalories }) {
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
                   >
-                    <MenuItem value={"male"}>Male</MenuItem>
-                    <MenuItem value={"female"}>Female</MenuItem>
+                    <MenuItem value={"Male"}>Male</MenuItem>
+                    <MenuItem value={"Female"}>Female</MenuItem>
                   </Select>
                 </FormControl>
 
@@ -375,7 +399,7 @@ function CalorieCalculator({ setTotalCalories, totalCalories }) {
                   textAlign: "center",
                 }}
               >
-                <p id="print">{totalCalories}</p>
+                <p id="print">{totalCalories} kcal</p>
                 <p id="error">{error}</p>
               </div>
             </div>
