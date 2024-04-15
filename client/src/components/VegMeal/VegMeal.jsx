@@ -141,6 +141,7 @@ const VegMeal = () => {
           "Soyabean",
           "Brinjal",
           "Mashed Potato",
+          
         ];
 
         const random_dish =
