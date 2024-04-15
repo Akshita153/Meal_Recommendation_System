@@ -14,7 +14,7 @@ const Recipes = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const YOUR_APP_ID = `2d5ed427`;
-  const YOUR_APP_KEY = "73539c7d3bc65f67f57fc8a58cce7a76";
+  const YOUR_APP_KEY = "9dba4362bfc3787896f3b3876514ccb5";
 
   const url = `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&health=${healthLabel}&mealType=${mealType}&cuisineType=indian`;
   const url1 = `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&cuisineType=indian`;
