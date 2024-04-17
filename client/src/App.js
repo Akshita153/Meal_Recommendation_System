@@ -16,7 +16,6 @@ import VeganMeal from "./components/VeganMeal/VeganMeal";
 import Profile from "./components/Profile/Profile";
 axios.defaults.withCredentials = true;
 
-
 function App() {
   return (
     <>

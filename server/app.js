@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import userRouter from "./routes/user.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import healthDataRouter from "./routes/HealthData.js";
+import healthDataRouter from "./routes/healthData.js";
 const app = express();
 
 // Middlewares
