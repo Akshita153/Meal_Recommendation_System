@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./navbar.css";
 import { UserContext } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   // Using context variables
   const { user, logout, setUser } = useContext(UserContext);
 
@@ -27,6 +30,7 @@ const Navbar = () => {
     // deleting user obj from cookies
     await axios.post("/logout");
     setUser(null);
+    navigate("/");
     alert("User log-out successful");
   };
 
