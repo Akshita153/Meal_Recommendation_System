@@ -26,6 +26,6 @@ app.use(healthDataRouter);
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() =>
-    app.listen(5000, () => console.log("Server is running on port 5000!"))
+    app.listen(5001, () => console.log("Server is running on port 5000!"))
   )
   .catch((e) => console.log(e));

@@ -13,8 +13,8 @@ const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const YOUR_APP_ID = `2d5ed427`;
-  const YOUR_APP_KEY = "9dba4362bfc3787896f3b3876514ccb5";
+  const YOUR_APP_ID = `3b4dc18e`;
+  const YOUR_APP_KEY = "7a40e35113fcafab268078cc60625ae7";
 
   const url = `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&health=${healthLabel}&mealType=${mealType}&cuisineType=indian`;
   const url1 = `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&cuisineType=indian`;
